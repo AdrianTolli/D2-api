@@ -52,11 +52,11 @@ export const getDestinyPlayer = (membershipType, name, callback) => {
     _bungieApiGet(url, callback);
 };
 
-export const getDestinyCharacter = (membershipType, destinyMembershipId, charcterId, callback) => {
+export const getDestinyCharacter = (membershipType, destinyMembershipId, characterId, callback) => {
     let url = root + urls.destinyCharacter;
     url = url.replace('{membershipType}', membershipType);
     url = url.replace('{destinyMembershipId}', destinyMembershipId);
-    url = url.replace('{characterId}', charcterId);
+    url = url.replace('{characterId}', characterId);
     console.log('Character URL: ' + url)
 
     _bungieApiGet(url, callback);

@@ -3,6 +3,20 @@ import express from 'express';
 
 var app = express();
 
+const races={
+  0: 'Titan',
+  1: 'Hunter',
+  2: 'Warlock',
+  3: 'Unknown'
+};
+
+const classes= {
+  0: 'Human',
+  1: 'Awoken',
+  2: 'Exo',
+  3: 'Unknown'
+};
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
