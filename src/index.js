@@ -1,5 +1,3 @@
-import React from 'react';
-import {render} from 'react-dom';
 import {getDestinyUser,getDestinyMembershipData, getDestinyProfile} from './api';
 import express from 'express';
 
