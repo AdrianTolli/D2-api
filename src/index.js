@@ -4,16 +4,16 @@ import express from 'express';
 var app = express();
 
 const races={
-  0: 'Titan',
-  1: 'Hunter',
-  2: 'Warlock',
+  0: 'Human',
+  1: 'Awoken',
+  2: 'Exo',
   3: 'Unknown'
 };
 
 const classes= {
-  0: 'Human',
-  1: 'Awoken',
-  2: 'Exo',
+  0: 'Titan',
+  1: 'Hunter',
+  2: 'Warlock',
   3: 'Unknown'
 };
 
@@ -45,6 +45,35 @@ app.get('/searchUser/:userName', (req, res) => {
       getDestinyProfile(4, bigMembershipId, (error, response, body) => {
         let profile = JSON.parse(body);
         console.log(profile.Response.profile.data.characterIds);
+
+
+        //Replace raceType to understandable string
+        for(let key in profile.Response.characters.data){
+          if(profile.Response.characters.data[key].raceType===0){
+            profile.Response.characters.data[key].raceType='Human';
+          }
+          else if(profile.Response.characters.data[key].raceType===1){
+            profile.Response.characters.data[key].raceType='Awoken';
+          }
+          else if(profile.Response.characters.data[key].raceType===2){
+            profile.Response.characters.data[key].raceType='Exo'
+          }
+        }
+
+
+        //Replace classType to understandable string
+        for(let key in profile.Response.characters.data){
+          if(profile.Response.characters.data[key].classType===0){
+            profile.Response.characters.data[key].classType='Titan';
+          }
+          else if(profile.Response.characters.data[key].classType===1){
+            profile.Response.characters.data[key].classType='Hunter';
+          }
+          else if(profile.Response.characters.data[key].classType===2){
+            profile.Response.characters.data[key].classType='Warlock'
+          }
+        }
+
         res.json(profile);
       });
     });
